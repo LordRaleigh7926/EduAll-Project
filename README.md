@@ -1,5 +1,3 @@
-### EduAll Project Structure
-
 ## EduAll - Learning Path and Resource Management System
 
 ### Overview
