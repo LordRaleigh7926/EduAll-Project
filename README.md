@@ -52,6 +52,13 @@ EduAll addresses the lack of a clear and structured path for individuals looking
 
 Contributions are welcome! Please fork this repository, make changes, and submit a pull request.
 
+### How to try it out?
+
+- Install the python packages from `requirements.txt`
+- Enter gemini-api-key in config.json
+- Configure firebase keys and variables in app.py and eduall.json
+- run `flask run` command in project directory
+
 ### License
 
 This project is licensed under the MIT License.
