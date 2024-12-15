@@ -10,12 +10,12 @@ app.secret_key = 'supersecretkey'
 
 # Firebase configuration
 firebaseConfig = {
-  "apiKey": "AIzaSyDMbl0549XQXckH-bkqkZrZgnN-3C4DJEs",
-  "authDomain": "eduall-d42d8.firebaseapp.com",
-  "projectId": "eduall-d42d8",
-  "storageBucket": "eduall-d42d8.appspot.com",
-  "messagingSenderId": "173044320418",
-  "appId": "1:173044320418:web:8205dddd73788c415c2ffb",
+  "apiKey": "",
+  "authDomain": "",
+  "projectId": "",
+  "storageBucket": "",
+  "messagingSenderId": "",
+  "appId": "",
   "databaseURL": "" ,
 }
 
