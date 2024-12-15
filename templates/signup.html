@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask App</title>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+    <link href="{{url_for('static', filename='css/nav.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/login.css')}}" rel="stylesheet">
+    
+	<script src="{{url_for('static', filename='js/google_login.js')}}"></script>
+	
+
+</head>
+<body>
+	<nav><ul>
+        <li><a class="nav_link" href="/">Home</a></li>
+        <li><a class="nav_link" href="/dashboard">Dashboard</a></li>
+        <li><a class="nav_link" href="/about">About</a></li>
+    </ul></nav>
+
+	<div class="section">
+		<div class="container">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+			          	<label for="reg-log"></label>
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Log In</h4>
+											<form action="/login", method="POST">
+											<div class="form-group">
+												<input type="email" name="email" class="form-style" placeholder="Your Email" id="email1" autocomplete="off" >
+												<i class="input-icon uil uil-at"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="password" name="password" class="form-style" placeholder="Your Password" id="password1" autocomplete="off" >
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+											<button type="submit" class="btn mt-4">Login</button>
+											<div onclick="googleSignIn()" class="btn mt-4">Google</div>
+
+											</form>
+				      					</div>
+			      					</div>
+			      				</div>
+								<div class="card-back">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Sign Up</h4>
+											<form action="/signup" method="POST">
+											<div class="form-group">
+
+												<input type="text" name="name" class="form-style" placeholder="Your Full Name" id="name" autocomplete="off" >
+												<i class="input-icon uil uil-user"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="email" name="email" class="form-style" placeholder="Your Email" id="email2" type=email autocomplete="off" >
+												<i class="input-icon uil uil-at"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="password" name="password" class="form-style" placeholder="Your Password" id="password2" minlength="8" autocomplete="off" >
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+											<button type="submit" class="btn mt-4">Sign Up</button>
+											<div onclick="googleSignIn()" class="btn mt-4">Google</div>
+											</form>
+				      					</div>
+			      					</div>
+			      				</div>
+			      			</div>
+			      		</div>
+			      	</div>
+		      	</div>
+	      	</div>
+	    </div>
+	</div>
+
+
+	<script>
+
+		document.addEventListener("DOMContentLoaded", () => {
+		
+		// Parse the `{{login}}` variable
+		const loginStatus = "{{login}}".trim(); // Use `|safe` to prevent auto-escaping
+		
+		// Debugging loginStatus
+		console.log("Login Status Type:", typeof loginStatus);
+		console.log("Login Status Value:", loginStatus);
+		
+		// Display feedback based on login status
+		if (loginStatus === "true") {
+			showFeedback("Sign Up Successful. Please proceed to login.");
+		} else if (loginStatus === "signup failed") {
+			showFailedFeedback("Sign Up Failed. Please try again.");
+		} else if (loginStatus === "Failed Login") {
+			showFailedFeedback("Login Failed. Please check your credentials.");
+		}
+		});
+		
+		function showFeedback(message) {
+		const feedback = document.createElement('div');
+		feedback.className = 'copy-feedback';
+
+		feedback.textContent = message;
+		document.body.appendChild(feedback);
+		setTimeout(() => {
+			feedback.style.opacity = '0';
+			setTimeout(() => feedback.remove(), 300);
+		}, 2000);
+		}
+		
+		function showFailedFeedback(message) {
+		const feedback = document.createElement('div');
+		feedback.className = 'failed-feedback';
+
+		feedback.textContent = message;
+		
+		document.body.appendChild(feedback);
+		setTimeout(() => {
+			feedback.style.opacity = '0';
+			setTimeout(() => feedback.remove(), 300);
+		}, 2000);
+		}
+	</script>
+
+
+
+
+	
+	
+</body>
+</html>
+

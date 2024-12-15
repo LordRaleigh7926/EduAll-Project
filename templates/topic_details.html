@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic Details</title>
+
+    <link href="{{url_for('static', filename='css/nav.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/topic_details.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/editor_easyMD.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+
+
+
+</head>
+<body id="bodyMain" data-user-id="{{ user_id }}" data-topic-id="{{ topic_id }}">
+    <nav>
+        <ul>
+            <li><a class="nav_link" href="/">Home</a></li>
+            <li><a class="nav_link" href="/dashboard">Dashboard</a></li>
+            <li><a class="nav_link" href="/about">About</a></li>
+            <li><a class="nav_link" href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <h1 class="main-heading">{{ topic.topic_title }}</h1>
+    
+    <div class="main-grid">
+        <div class="roadmap">
+            <h2>Roadmap</h2>
+            <textarea id="roadmap-editor">{{ topic.roadmap|safe }}</textarea>
+            <button id="save-roadmap-button" class="save-button">Save</button>
+        </div>
+
+        <div class="edit-prog-container">
+            <h2 class="editor-headings">Progress Records</h2>
+            <textarea id="editor-prog" placeholder="Start typing...">{{ progress }}</textarea>
+            <div class="buttons-editor-prog">
+                <button class="save-button-prog" id="save-prog">Save</button>
+                <button class="save-button-prog" id="cleartxt-prog">Clear Text</button></div>
+            <div id="message-prog"></div>
+        </div>
+
+        <h1 id="second-heading">
+            Resources
+        </h1>
+
+        <div class="book">
+            <h2>Books</h2>
+            {{topic.books|safe}}
+        </div>
+
+        <div class="link">
+            <h2>Links</h2>
+                {{ topic.links|safe }}
+        </div>
+
+        <div class="quotes" id="quote1">
+            {{topic.quote1|safe}}
+        </div>
+
+        <div class="quotes" id="quote2">
+            {{topic.quote2|safe}}
+        </div>
+
+    </div>
+
+    <h1 id="third-heading">
+        Extra Research and Learning
+    </h1>
+
+    <div class="second-grid">
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <div id="input-container">
+            <input type="text" id="message-input" placeholder="Type a message..." />
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <div id="editor-container">
+        <h2 class="editor-headings">Notes & Research</h2>
+        <textarea id="editor" placeholder="Start typing...">{{ content }}</textarea>
+        <div class="buttons-editor">
+            <button class="save-button" id="save">Save</button>
+            <button class="save-button" id="cleartxt">Clear Text</button>
+        </div>
+        <div id="message"></div>
+    </div>
+    </div>
+
+    <div class="form-del">
+        
+        <form action="{{ url_for('del_topic') }}" method="POST" >
+            <input type="hidden" name="user_id" value="{{ user_id }}">
+            <input type="hidden" name="topic_id" value="{{ topic_id }}">
+            <button type="submit" class="del-button">
+                Delete
+            </button>
+        </form>
+    </div>
+
+    <script src="{{url_for('static', filename='js/topic_details.js')}}"></script>
+
+</body>
+</html>

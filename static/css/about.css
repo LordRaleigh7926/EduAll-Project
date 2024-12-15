@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body, html {
+    font: bold 14px/1.4 'Poppins', 'Open Sans', arial;
+    font-weight: 400;
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.7;
+    color: #c4c3ca;
+    background-color: #1f2029;
+    background-image: url("../images/loginbg2.png");
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.small-container {
+    margin-top: 4rem;
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: #ffeba7;
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+p {
+    max-width: 60vw;
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
+a {
+    color: #ffeba7;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffeba7;
+}
+
+a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffeba7;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+#profilePic {
+    border-radius: 100%;
+    background-image: url("../images/about.png");
+    width: 200px;
+    height: 200px;
+    background-position: center;
+    background-size: 240px;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+}
+
+/* Responsive Design */
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    p {
+        max-width: 60vw;
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .small-container {
+        padding: 1.5rem 2.5rem;
+    }
+}
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 550px) {
+    p {
+        max-width: 80vw;
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .small-container {
+        padding: 20px;
+    }
+}

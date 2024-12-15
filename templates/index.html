@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/nav.css')}}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a class="nav_link" href="/">Home</a></li>
+            <li><a class="nav_link" href="/dashboard">Dashboard</a></li>
+            <li><a class="nav_link" href="/about">About</a></li>
+            {% if logged_in %}
+                <li><a class="nav_link" href="/logout">Logout</a></li>
+            {% else %}
+                <li><a class="nav_link" href="/signup">Signup</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+
+    <!-- Hero Section with Parallax Effect -->
+    <section class="parallax">
+        <div class="hero-content">
+            <h1>Master Any Skill, One Step at a Time</h1>
+            <p>Start your learning journey with curated roadmaps, resources, and expert guidance.</p>
+            <a href="/dashboard" class="cta-button">Start Learning Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <img src="{{url_for('static', filename='images/books.jpeg')}}" alt="Books">
+            <h2>AI Curated Recommendations</h2>
+            <p>Our AI will fetch industry standard books and other learning sources</p>
+        </div>
+        <div class="feature">
+            <img src="{{url_for('static', filename='images/courses.jpeg')}}" alt="Courses">
+  
+            <h2>Note Taker</h2>
+            <p>Store your thoughts and ideas in our cloud based note taking file</p>
+        </div>
+        <div class="feature">
+            <img src="{{url_for('static', filename='images/vid.jpg')}}" alt="Videos">
+            <h2>Instant AI Chat</h2>
+            <p>Talk and ask our AI model to aid you in your learning.</p>
+        </div>
+    </section>
+
+    <!-- Testimonial Section with Parallax Effect -->
+    <section class="parallax testimonial-section">
+        <div class="testimonial-content">
+            <h2>Create the Highest, Grandest vision possible for your life</h2>
+            <h2>Because you become what you belief</h2>
+            <p>Oprah</p>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to start learning?</h2>
+            <a href="/dashboard" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="{{url_for('static', filename='css/nav.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/dashboard.css')}}" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a class="nav_link" href="/">Home</a></li>
+            <li><a class="nav_link" href="/dashboard">Dashboard</a></li>
+            <li><a class="nav_link" href="/about">About</a></li>
+            <li><a class="nav_link" href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    
+    <div class="main-grid">
+    <div class="main-heading-div">
+        <!-- Centered Dashboard heading -->
+        <h1 id="line-one" class="main-heading">Dashboard</h1>
+    </div>
+    <!-- Centered heading for user topics -->
+    <div class="topic-div">
+    <h1 class="user-topics-heading">User Topics</h1>
+
+    <!-- Displaying topics in a list format -->
+    <div class="topics-list">
+        {% if topics %}
+        <ul>
+            {% for topic in topics %}
+            <li><a href="{{ url_for('topic_detail', user_id=user_id,topic_id=topic.topic_id) }}">{{ topic.topic_title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No topics started.<br>Please enter a topic and proceed.</p>
+        {% endif %}
+    </div>
+    </div>
+    
+    <div class="container" >
+        <!-- Form centered in the page -->
+        <div class="form-container">
+            <form action="/submit" method="POST" class="form-field">
+                <label for="inputText" id="form-label">Enter the topic or skill you want to learn</label><br><br>
+                <input type="text" id="inputText" name="inputText" autocomplete="false" required><br><br><br>
+                <label for="inputTime" id="time-label">Enter a time constraint, if any</label><br>
+                <input type="text" id="inputTime" name="inputTime"><br><br>
+                <label for="inputSubTopics" id="subtopic-label">Enter subtopics (Optional)</label><br>
+                <input type="text" id="inputSubTopics" name="inputSubTopics"><br><br>
+                <button type="submit" id="submit-button">Submit</button>
+            </form>
+        </div>
+
+    </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
+</body>
+</html>
